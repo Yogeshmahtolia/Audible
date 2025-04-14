@@ -26,6 +26,15 @@ public class MemberController {
         }catch(Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody MemberDTO userDto){
+        try{
+            String output = memberService.loginUser(userDto);
+            return ResponseEntity.status(HttpStatus.OK).body(output);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
